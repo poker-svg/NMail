@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:21:24
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-03-26 19:23:56
+ * @LastEditTime: 2023-03-27 17:15:09
  * @FilePath: \NMail\login.html
  * @Description: 用户登录
 -->
@@ -12,7 +12,205 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <!-- 标题：NJU E-Mail -->
+    <title>NJU E-Mail</title>
+    <!-- 导入标题处图标 -->
+    <link
+      rel="shortcut icon"
+      href="/assets/images/login/icon.ico"
+      type="image/x-icon"
+    />
+
+    <!-- 导入自定义css样式表 -->
+    <link rel="stylesheet" href="/assets/css/login.css" type="text/css" />
+    <!-- 导入第三方css辅助样式表：animate -->
+    <link rel="stylesheet" href="/assets/lib/animate/animate.css" />
+
+    <!-- 导入第三方js插件：lay-ui -->
+    <link rel="stylesheet" href="/assets/lib/layui/layui.all.js" />
   </head>
-  <body></body>
+  <body>
+    <!-- 南京大学120周年logo -->
+    <a class="logo">
+      <img src="/assets/images/login/NJULogo.png" alt="" />
+    </a>
+
+    <!-- 登录界面和注册界面 -->
+    <div class="login_and_register_page">
+      <!-- 登录界面 -->
+      <div class="login_page">
+        <!-- 登录表单 -->
+        <form class="layui-form" id="form-login">
+          <div class="left_box">
+            <div id="login_page_title">电子邮件系统</div>
+            <div class="clear"></div>
+
+            <div class="yhdl-dl Pad_Top">
+              <div class="xy hide"></div>
+              <div id="user_login_title">用户登录</div>
+              <div class="user_login_bottom_line"></div>
+              <div id="message" align="center"></div>
+
+              <!-- 用户名 -->
+              <div align="center" class="layui-form-item login_box01">
+                <i class="layui-icon layui-icon-username"></i>
+                <input
+                  type="text"
+                  id="login_username"
+                  name="login_username"
+                  required
+                  lay-verify="required|number"
+                  placeholder="请输入您的账号"
+                  autocomplete="off"
+                  class="layui-input username_input"
+                />
+              </div>
+
+              <!-- 密码 -->
+              <div align="center" class="layui-form-item login_box02">
+                <i class="layui-icon layui-icon-password"></i>
+                <input
+                  type="password"
+                  id="login_user_password"
+                  name="login_user_password"
+                  required
+                  lay-verify="required|pass"
+                  placeholder="请输入您的密码"
+                  autocomplete="off"
+                  class="layui-inputuser_password_input user_password_input"
+                />
+              </div>
+
+              <div class="warning" align="left">
+                &middot; 遵守法律法规，请勿发送涉密信息
+              </div>
+
+              <!-- 登录按钮 -->
+              <div align="center" class="layui-form-item click_login">
+                <button
+                  id="login_button"
+                  class="layui-btn layui-btn-fluid layui-btn-normal"
+                  lay-submit
+                >
+                  点击登录
+                </button>
+              </div>
+
+              <div class="endnote">
+                <a
+                  id="forget_password"
+                  href=" https://itsc.nju.edu.cn/e7/42/c21422a583490/page.htm"
+                  >忘记密码？</a
+                >
+                <a
+                  id="normal_question"
+                  href="https://itsc.nju.edu.cn/96/2e/c21475a497198/page.htm"
+                >
+                  常见问题
+                </a>
+                <a id="link_register_page" href="javascript:;"> 注册邮箱 </a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- 注册界面 -->
+      <div class="register_page hide">
+        <!-- 注册表单 -->
+        <form class="layui-form" id="form-reg">
+          <div class="left_box">
+            <div id="register_page_title">电子邮件系统</div>
+            <div class="clear"></div>
+
+            <div class="yhdl-dl Pad_Top">
+              <div class="xy hide"></div>
+              <div id="user_register_title">用户注册</div>
+              <div class="user_login_bottom_line"></div>
+
+              <!-- 用户名 -->
+              <div align="center" class="layui-form-item register_box01">
+                <i class="layui-icon layui-icon-username"></i>
+                <input
+                  type="text"
+                  id="register_username"
+                  name="register_username"
+                  required
+                  lay-verify="required|number"
+                  placeholder="请输入您的账号"
+                  autocomplete="off"
+                  class="layui-input username_input"
+                />
+              </div>
+
+              <!-- 密码 -->
+              <div align="center" class="layui-form-item register_box02">
+                <i class="layui-icon layui-icon-password"></i>
+                <input
+                  type="password"
+                  id="regitser_user_password"
+                  name="regitser_user_password"
+                  required
+                  lay-verify="required|pass"
+                  placeholder="请输入您的密码"
+                  autocomplete="off"
+                  class="layui-input user_password_input"
+                />
+              </div>
+
+              <!-- 确认密码 -->
+              <div align="center" class="layui-form-item register_box02">
+                <i class="layui-icon layui-icon-password"></i>
+                <input
+                  type="password"
+                  id="regitser_user_repassword"
+                  name="regitser_user_repassword"
+                  required
+                  lay-verify="required|pass|repass"
+                  placeholder="请确认密码"
+                  autocomplete="off"
+                  class="layui-input user_password_input"
+                />
+              </div>
+
+              <div class="warning" align="left">
+                &middot; 遵守法律法规，请勿发送涉密信息
+              </div>
+
+              <!-- 注册按钮 -->
+              <div align="center" class="layui-form-item click_register">
+                <button
+                  id="register_button"
+                  class="layui-btn layui-btn-fluid layui-btn-normal"
+                  lay-submit
+                >
+                  点击注册
+                </button>
+              </div>
+
+              <div class="endnote">
+                <a
+                  id="forget_password"
+                  href=" https://itsc.nju.edu.cn/e7/42/c21422a583490/page.htm"
+                  >忘记密码？</a
+                >
+                <a
+                  id="normal_question"
+                  href="https://itsc.nju.edu.cn/96/2e/c21475a497198/page.htm"
+                >
+                  常见问题
+                </a>
+                <a id="link_login_page" href="javascript:;">登陆邮箱</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./assets/lib/layui/layui.all.js"></script>
+    <script src="/assets/lib/jquery.js"></script>
+    <script src="./assets/js/ajaxPre.js"></script>
+    <script src="/assets/js/login.js"></script>
+  </body>
 </html>
