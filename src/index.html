@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:20:48
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-03-26 19:23:47
+ * @LastEditTime: 2023-03-28 18:57:00
  * @FilePath: \NMail\index.html
  * @Description: index.html入口
 -->
@@ -12,7 +12,96 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>南京大学</title>
+
+    <!-- 导入自定义css样式表 -->
+    <link rel="stylesheet" href="./assets/css/index.css" type="text/css" />
   </head>
-  <body></body>
+
+  <body>
+    <!-- 顶部的用户信息 -->
+    <div id="top_panel_userinfo">
+      <div class="getuserdata topdata" id="top_data_id">
+        <div id="logo_and_userinfo">
+          <a
+            id="NJU_logo_link_home"
+            onclick="getTop().logKV('CommFunc', 'webmail|logo|click');"
+            href="./index.html"
+            hidefocus
+            title="邮箱首页"
+          >
+            <img id="NJU_logo_img" src="./assets/images/index/NJULogo.gif" />
+          </a>
+
+          <div class="userinfo">
+            <b id="useralias">徐杨鑫</b>
+            <span>
+              &lt;<span id="username">201220028@smail.nju.edu.cn</span>&gt;
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分界线 -->
+    <div id="topLine">
+      <div class="topline">
+        <div class="toplineimg left"></div>
+      </div>
+    </div>
+
+    <!-- 左侧功能菜单，使用表格实现 -->
+    <div id="left_panel_menu">
+      <div id="left_panel_top_box">
+        <ul class="function_box fdul" id="functions">
+          <li class="write_mail fs" id="write_mail_btn_td">
+            <input type="button" class="write_mailbtn" disabled="" />
+            <a
+              id="write_mail_btn"
+              hidefocus=""
+              href="javascript:void(0);"
+              target="mainFrame"
+              onclick=""
+              >写信
+            </a>
+          </li>
+          <li class="receive_mail fs">
+            <input type="button" class="receive_mailbtn" disabled="" />
+            <a
+              id="receive_mail_btn"
+              hidefocus=""
+              href="javascript:void(0);"
+              target="actionFrame"
+              onclick="">
+              收信
+            </a>
+          </li>
+          <li class="friends fs">
+            <input type="button" class="friendsbtn" disabled="">
+            <a
+              id="friends_btn"
+              hidefocus=""
+              href="javascript:void(0);"
+              target="mainFrame"
+              onclick="">
+              通讯录
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+      <div id="mainFrameContainer">
+        <iframe
+          onload=""
+          src=""
+          name="mainFrame"
+          id="mainFrame"
+          frameborder="no"
+          scrolling="auto"
+          hidefocus=""
+        ></iframe>
+      </div>
+    </div>
+  </body>
 </html>
