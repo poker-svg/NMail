@@ -2,12 +2,11 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:18:44
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-03-28 09:48:01
+ * @LastEditTime: 2023-03-28 13:17:46
  * @FilePath: \NMail\assets\js\login.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
 $(function () {
-
   // 登录界面切换为注册界面
   $("#link_register_page").on("click", function () {
     $(".login_page").hide();
@@ -38,36 +37,56 @@ $(function () {
 
   // 前端发送注册请求给后端服务器
   $("#form-reg").on("submit", function (e) {
+    // 阻止默认提交行为
     e.preventDefault();
+
+    const register_data =
+      "username=" +
+      $("#form-reg [name=register_username]").val() +
+      "&" +
+      "password=" +
+      $("#form-reg [name=regitser_user_password]").val();
 
     $.ajax({
       url: "/api/reguser",
       type: "POST",
-      data: $(this).serialize(),
+      // data: $(this).serialize(),
+      data: register_data,
       success: function (res) {
         if (res.status !== 0) {
           return layer.msg(res.msg);
         }
         layer.msg("注册成功");
-        $("#link_reg").trigger("click");
+        $("#link_login_page").trigger("click");
       },
     });
   });
 
   // 前端发送登录请求给后端服务器
   $("#form-login").on("submit", function (e) {
+    // 阻止默认提交行为
     e.preventDefault();
+
+    const login_data =
+      "username=" +
+      $("#form-login [name=login_username]").val() +
+      "&" +
+      "password=" +
+      $("#form-login [name=login_user_password]").val();
 
     $.ajax({
       url: "/api/login",
       type: "POST",
-      data: $(this).serialize(),
+      // data: $(this).serialize()),
+      data: login_data,
       success: function (res) {
         if (res.status !== 0) {
           return layer.msg(res.msg);
         }
         layer.msg("登录成功");
+        // 将服务器发回的token存储在localStorage中
         localStorage.setItem("token", res.token);
+        // 跳转到N-Mail主页
         location.href = "./index.html";
       },
     });
