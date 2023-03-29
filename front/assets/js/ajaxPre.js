@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:18:44
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-03-29 16:02:27
+ * @LastEditTime: 2023-03-29 17:00:05
  * @FilePath: \NMail\src\assets\js\ajaxPre.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -19,7 +19,7 @@ $.ajaxPrefilter(function (options) {
         res.responseJSON.msg === "身份认证失败"
       ) {
         localStorage.removeItem("token");
-        location.href = "/src/login.html";
+        location.href = "/front/login.html";
       }
     };
   }

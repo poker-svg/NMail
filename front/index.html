@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:20:48
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-03-29 16:20:20
+ * @LastEditTime: 2023-03-29 17:29:47
  * @FilePath: \NMail\index.html
  * @Description: index.html入口
 -->
@@ -79,50 +79,50 @@
           <!-- 左侧功能导航区（可配合layui已有的垂直导航） -->
           <ul class="layui-nav layui-nav-tree" lay-shrink="all">
             <li class="layui-nav-item layui-this">
-              <a href="./home/dashboard.html" target="fm">
+              <a href="./home/flappy_bird.html" target="fm">
                 <i class="layui-icon layui-icon-home"></i>
                 首页
               </a>
             </li>
             <li class="layui-nav-item">
-              <a href="javascript:;">
+              <a href="./mails/writeMails.html" target="fm">
                 <i class="layui-icon layui-icon-edit"></i>
                 写信
               </a>
             </li>
             <li class="layui-nav-item">
-              <a href="javascript:;">
+              <a href="./mails/readMails.html" target="fm">
                 <i class="layui-icon layui-icon-notice"></i>
                 收信
               </a>
             </li>
             <li class="layui-nav-item">
-              <a href="javascript:;">
+              <a href="./friends/myFriends.html" target="fm">
                 <i class="layui-icon layui-icon-friends"></i>
                 通讯录
               </a>
             </li>
             <li class="layui-nav-item">
-              <a href="javascript:;">
+              <a href="javascript:;" target="fm">
                 <i class="layui-icon layui-icon-user"></i>
                 个人中心
               </a>
               <dl class="layui-nav-child">
                 <dd>
                   <a href="./user/user_info.html" target="fm">
-                    <i class="layui-icon layui-icon-app"></i>
+                    <i class="layui-icon layui-icon-username"></i>
                     基本资料
                   </a>
                 </dd>
                 <dd>
                   <a href="./user/user_avatar.html" target="fm">
-                    <i class="layui-icon layui-icon-app"></i>
-                    更换头像</a
-                  >
+                    <i class="layui-icon layui-icon-camera-fill"></i>
+                    更换头像
+                  </a>
                 </dd>
                 <dd>
                   <a href="./user/user_pwd.html" target="fm">
-                    <i class="layui-icon layui-icon-app"></i>
+                    <i class="layui-icon layui-icon-password"></i>
                     重置密码
                   </a>
                 </dd>
@@ -134,7 +134,11 @@
 
       <!-- 内容主体区域 -->
       <div class="layui-body">
-        <iframe name="fm" src="./home/dashboard.html" frameborder="0"></iframe>
+        <iframe
+          name="fm"
+          src="./home/flappy_bird.html"
+          frameborder="0"
+        ></iframe>
       </div>
 
       <!-- 脚注 -->

@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:18:44
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-03-29 15:47:46
+ * @LastEditTime: 2023-03-29 17:00:12
  * @FilePath: \NMail\src\assets\js\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -19,7 +19,7 @@ $(function () {
       },
       function (index) {
         localStorage.removeItem("token");
-        location.href = "/src/login.html";
+        location.href = "/front/login.html";
         layui.layer.close(index);
       }
     );
