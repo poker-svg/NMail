@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:20:48
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-03-28 18:57:00
+ * @LastEditTime: 2023-03-29 15:11:43
  * @FilePath: \NMail\index.html
  * @Description: index.html入口
 -->
@@ -14,94 +14,129 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>南京大学</title>
 
+    <!-- 导入layui.css -->
+    <link rel="stylesheet" href="./assets/lib/layui/css/layui.css" />
+    <!-- 导入icon -->
+    <link rel="stylesheet" href="./assets/fonts/iconfont.css" />
     <!-- 导入自定义css样式表 -->
     <link rel="stylesheet" href="./assets/css/index.css" type="text/css" />
   </head>
 
-  <body>
-    <!-- 顶部的用户信息 -->
-    <div id="top_panel_userinfo">
-      <div class="getuserdata topdata" id="top_data_id">
-        <div id="logo_and_userinfo">
+  <body class="layui-layout-body">
+    <div class="layui-layout layui-layout-admin">
+      <!-- 顶部的用户信息 -->
+      <div id="top_panel_userinfo" class="layui-header">
+        <div class="layui-logo">
           <a
-            id="NJU_logo_link_home"
-            onclick="getTop().logKV('CommFunc', 'webmail|logo|click');"
+            id = "NJU_logo_link_home"
             href="./index.html"
             hidefocus
             title="邮箱首页"
           >
-            <img id="NJU_logo_img" src="./assets/images/index/NJULogo.gif" />
-          </a>
-
-          <div class="userinfo">
-            <b id="useralias">徐杨鑫</b>
-            <span>
-              &lt;<span id="username">201220028@smail.nju.edu.cn</span>&gt;
-            </span>
-          </div>
+          <img id="NJU_logo_img" src="./assets/images/index/NJULogo.gif" alt=""/>
         </div>
-      </div>
-    </div>
 
-    <!-- 分界线 -->
-    <div id="topLine">
-      <div class="topline">
-        <div class="toplineimg left"></div>
-      </div>
-    </div>
-
-    <!-- 左侧功能菜单，使用表格实现 -->
-    <div id="left_panel_menu">
-      <div id="left_panel_top_box">
-        <ul class="function_box fdul" id="functions">
-          <li class="write_mail fs" id="write_mail_btn_td">
-            <input type="button" class="write_mailbtn" disabled="" />
-            <a
-              id="write_mail_btn"
-              hidefocus=""
-              href="javascript:void(0);"
-              target="mainFrame"
-              onclick=""
-              >写信
+        <ul class="layui-nav layui-layout-right">
+          <li class="layui-nav-item">
+            <a href="javascript:;" class="userinfo">
+              <img src="http://t.cn/RCzsdCq" class="layui-nav-img" />
+              <span class="text-avatar">A</span> 个人中心
             </a>
+            <dl class="layui-nav-child">
+              <dd>
+                <a href="./user/user_info.html" target="fm">基本资料</a>
+              </dd>
+              <dd>
+                <a href="./user/user_avatar.html" target="fm">更换头像</a>
+              </dd>
+              <dd><a href="./user/user_pwd.html" target="fm">重置密码</a></dd>
+            </dl>
           </li>
-          <li class="receive_mail fs">
-            <input type="button" class="receive_mailbtn" disabled="" />
-            <a
-              id="receive_mail_btn"
-              hidefocus=""
-              href="javascript:void(0);"
-              target="actionFrame"
-              onclick="">
-              收信
-            </a>
-          </li>
-          <li class="friends fs">
-            <input type="button" class="friendsbtn" disabled="">
-            <a
-              id="friends_btn"
-              hidefocus=""
-              href="javascript:void(0);"
-              target="mainFrame"
-              onclick="">
-              通讯录
-            </a>
+          <li class="layui-nav-item">
+            <a href="javascript:;" id="btnLogout"
+              ><span class="iconfont icon-tuichu"></span>退出</a
+            >
           </li>
         </ul>
       </div>
+
+      <!-- 左侧功能菜单，使用表格实现 -->
+      <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+          <!-- 欢迎用户区 -->
+          <div class="userinfo">
+            <img src="http://t.cn/RCzsdCq" class="layui-nav-img" />
+            <span class="text-avatar">A</span>
+            <span id="welcome">欢迎 ***</span>
+          </div>
+
+          <!-- 左侧功能导航区（可配合layui已有的垂直导航） -->
+          <ul class="layui-nav layui-nav-tree" lay-shrink="all">
+            <li class="layui-nav-item layui-this">
+              <a href="./home/dashboard.html" target="fm">
+                <i class="layui-icon layui-icon-home"></i>
+                首页
+              </a>
+            </li>
+            <li class="layui-nav-item">
+              <a href="javascript:;">
+                <i class="layui-icon layui-icon-edit"></i>
+                写信
+              </a>
+            </li>
+            <li class="layui-nav-item">
+              <a href="javascript:;">
+                <i class="layui-icon layui-icon-notice"></i>
+                收信
+              </a>
+            </li>
+            <li class="layui-nav-item">
+              <a href="javascript:;">
+                <i class="layui-icon layui-icon-friends"></i>
+                通讯录
+              </a>
+            </li>
+            <li class="layui-nav-item">
+              <a href="javascript:;">
+                <i class="layui-icon layui-icon-user"></i>
+                个人中心
+              </a>
+              <dl class="layui-nav-child">
+                <dd>
+                  <a href="./user/user_info.html" target="fm">
+                    <i class="layui-icon layui-icon-app"></i>
+                    基本资料
+                    </a>
+                </dd>
+                <dd>
+                  <a href="./user/user_avatar.html" target="fm">
+                    <i class="layui-icon layui-icon-app"></i>
+                    更换头像</a>
+                </dd>
+                <dd>
+                  <a href="./user/user_pwd.html" target="fm">
+                    <i class="layui-icon layui-icon-app"></i>
+                    重置密码
+                  </a>
+                </dd>
+              </dl>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 内容主体区域 -->
+      <div class="layui-body">
+        <iframe name="fm" src="./home/dashboard.html" frameborder="0"></iframe>
+      </div>
+
+      <!-- 脚注 -->
+      <div class="layui-footer">© nju.edu.cn -- poker-svg@firefox.com</div>
     </div>
 
-      <div id="mainFrameContainer">
-        <iframe
-          onload=""
-          src=""
-          name="mainFrame"
-          id="mainFrame"
-          frameborder="no"
-          scrolling="auto"
-          hidefocus=""
-        ></iframe>
-      </div>
-    </div>
+    <script src="./assets/lib/layui/layui.all.js"></script>
+    <script src="./assets/lib/jquery.js"></script>
+    <script src="./assets/js/ajaxPre.js"></script>
+    <script src="./assets/js/index.js"></script>
   </body>
 </html>

@@ -32,24 +32,13 @@ li {
   float: left;
 }
 
-#top_panel_userinfo {
-  position: relative;
-  width: 1536px;
-}
-
-#NJU_logo_link_home {
-  width: 126px;
-  height: 60px;
-  float: left;
-}
-
 #top_data_id {
   height: 66px;
   overflow: hidden;
 }
 
 .topdata {
-  background: #ffffff;
+  /* background: #ffffff; */
   height: 66px;
 }
 
@@ -59,14 +48,10 @@ li {
   top: 3px;
 }
 
-#NJU_logo_img {
-  height: 35px;
-  margin: 13px 15px 0 10px;
-}
-
-.userinfo {
-  margin-top: 1px;
-  float: left;
+#logo_container {
+  position: absolute;
+  left: 5px;
+  top: 3px;
 }
 
 #topLine {
@@ -112,7 +97,7 @@ ul.function_box {
 li.write_mail {
   margin: 0 10px 0 11px;
   padding: 2px 0 0 0;
-  height: 26px;
+  /* height: 26px; */
 }
 
 li.receive_mail {
@@ -176,14 +161,6 @@ iframe {
 
 .layui-body {
   overflow: hidden;
-}
-
-.userinfo {
-  height: 60px;
-  line-height: 60px;
-  text-align: center;
-  font-size: 12px;
-  user-select: none;
 }
 
 .layui-side-scroll .userinfo {
