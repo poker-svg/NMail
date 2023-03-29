@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:20:48
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-03-29 15:11:43
+ * @LastEditTime: 2023-03-29 16:20:20
  * @FilePath: \NMail\index.html
  * @Description: index.html入口
 -->
@@ -13,6 +13,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>南京大学</title>
+    <link rel="shortcut icon" href="./assets/images/index/exmail_logo.ico" />
 
     <!-- 导入layui.css -->
     <link rel="stylesheet" href="./assets/lib/layui/css/layui.css" />
@@ -28,12 +29,17 @@
       <div id="top_panel_userinfo" class="layui-header">
         <div class="layui-logo">
           <a
-            id = "NJU_logo_link_home"
+            id="NJU_logo_link_home"
             href="./index.html"
             hidefocus
             title="邮箱首页"
           >
-          <img id="NJU_logo_img" src="./assets/images/index/NJULogo.gif" alt=""/>
+            <img
+              id="NJU_logo_img"
+              src="./assets/images/index/NJULogo.gif"
+              alt=""
+            />
+          </a>
         </div>
 
         <ul class="layui-nav layui-layout-right">
@@ -106,12 +112,13 @@
                   <a href="./user/user_info.html" target="fm">
                     <i class="layui-icon layui-icon-app"></i>
                     基本资料
-                    </a>
+                  </a>
                 </dd>
                 <dd>
                   <a href="./user/user_avatar.html" target="fm">
                     <i class="layui-icon layui-icon-app"></i>
-                    更换头像</a>
+                    更换头像</a
+                  >
                 </dd>
                 <dd>
                   <a href="./user/user_pwd.html" target="fm">
