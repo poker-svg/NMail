@@ -31,17 +31,6 @@ a {
   width: 240px;
 }
 
-/* 登录界面和注册界面 */
-.login_and_register_page {
-  width: 488px;
-  height: 568px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: url(../images/login/login_box.png) no-repeat;
-}
-
 /* 登录界面 */
 .login_page {
   width: 488px;
@@ -55,7 +44,13 @@ a {
 
 /* 注册界面 */
 .register_page {
-  display: none;
+  width: 488px;
+  height: 568px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: url(../images/login/login_box.png) no-repeat;
 }
 
 /* 登录标题 */
