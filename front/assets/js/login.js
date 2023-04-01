@@ -50,7 +50,6 @@ $(function () {
     $.ajax({
       url: "/api/reguser",
       type: "POST",
-      // data: $(this).serialize(),
       data: register_data,
       success: function (res) {
         if (res.status !== 0) {
@@ -77,7 +76,6 @@ $(function () {
     $.ajax({
       url: "/api/login",
       type: "POST",
-      // data: $(this).serialize()),
       data: login_data,
       success: function (res) {
         if (res.status !== 0) {

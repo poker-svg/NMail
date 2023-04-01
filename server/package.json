@@ -1,0 +1,35 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@escook/express-joi": "^1.1.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-jwt": "^8.4.1",
+    "joi": "^17.4.0",
+    "jsonwebtoken": "^9.0.0",
+    "mysql": "^2.18.1"
+  },
+  "apidoc": {
+    "title": "N-Mail API",
+    "url": "http://127.0.0.1:8091",
+    "sampleUrl": "http://127.0.0.1:8091",
+    "header": {
+      "title": "文档说明",
+      "filename": "header.md"
+    },
+    "footer": {
+      "title": "文档结尾",
+      "filename": "footer.md"
+    }
+  }
+}
