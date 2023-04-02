@@ -1,3 +1,11 @@
+/*
+ * @Author: Xin 201220028@smail.nju.edu.cn
+ * @Date: 2023-04-02 21:00:00
+ * @LastEditors: Xin 201220028@smail.nju.edu.cn
+ * @LastEditTime: 2023-04-02 21:00:00
+ * @FilePath: \NMail\server\router_handler\email.js
+ * @Description: 后端的用户处理器
+ */
 // 导入数据库连接和操作模块
 const database = require("../database/index");
 // 导入用于发送邮件的第三方库
