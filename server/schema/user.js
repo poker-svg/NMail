@@ -18,12 +18,12 @@ const password = joi
   .required();
 
 // 定义用户信息中id, nickname, email 的验证规则
-const id = joi.number().integer().min(1).required()
-const nickname = joi.string().required()
-const email = joi.string().email().required()
+const id = joi.number().integer().min(1).required();
+const nickname = joi.string().required();
+const email = joi.string().email().required();
 
 // 定义用户头像的验证规则
-const user_picture = joi.string().dataUri().required()
+const user_picture = joi.string().dataUri().required();
 
 // 向外暴露用户数据的验证规则
 exports.reg_login_schema = {
@@ -38,20 +38,20 @@ exports.update_userinfo_schema = {
   body: {
     id,
     nickname,
-    email
-  }
-}
+    email,
+  },
+};
 
 // 向外暴露更新用户密码的验证规则
 exports.update_password_schema = {
-  body:{
+  body: {
     oldPwd: password,
-    newPwd: joi.not(joi.ref('oldPwd')).concat(password)
-  }
-}
+    newPwd: joi.not(joi.ref("oldPwd")).concat(password),
+  },
+};
 
 exports.update_user_picture_schema = {
-  body:{
-    user_picture
-  }
-}
+  body: {
+    user_picture,
+  },
+};

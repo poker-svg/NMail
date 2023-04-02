@@ -89,9 +89,7 @@ exports.sendEmail = (req, res) => {
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
-          if (error) {
-            return console.log(error);
-          }
+          if (error) return res.response_data("发送邮件失败,请稍后重试!");
           console.log("Message sent: %s", info.messageId);
         });
 
