@@ -1,10 +1,58 @@
+<!--
+ * @Author: Xin 201220028@smail.nju.edu.cn
+ * @Date: 2023-03-29 17:10:41
+ * @LastEditors: Xin 201220028@smail.nju.edu.cn
+ * @LastEditTime: 2023-04-02 18:39:35
+ * @FilePath: \NMail\front\mails\readMails.html
+ * @Description: 读取Email的界面
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>南京大学-收件箱</title>
+
+    <!-- 导入layui.css样式表 -->
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css" />
+    <!-- 导入自定义样式表 -->
+    <link rel="stylesheet" href="../assets/css/mails/readMails.css" />
   </head>
-  <body></body>
+  <body>
+    <div class="layui-card">
+      <div class="layui-card-header">南京大学-收件箱</div>
+      <div class="layui-card-body">
+        <!-- 列表区域 -->
+        <table class="layui-table">
+          <colgroup>
+            <col width="150" />
+            <col />
+            <col width="150" />
+            <col width="250" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>发件人</th>
+              <th>主题</th>
+              <th>时间</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <!-- 分页区域 -->
+        <div id="pageBox"></div>
+      </div>
+    </div>
+
+    <!-- 导入第三方 js 插件 -->
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/js/ajaxPre.js"></script>
+    <script src="../assets/lib/template-web.js"></script>
+
+    <!-- 导入自己的JS脚本 -->
+    <script src="../assets//js/mails/readMails.js"></script>
+  </body>
 </html>

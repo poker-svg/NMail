@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-04-02 14:42:50
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-02 16:36:09
+ * @LastEditTime: 2023-04-02 18:48:49
  * @FilePath: \NMail\server\router\email.js
  * @Description: email处理的路由模块
  */
@@ -19,5 +19,8 @@ const { send_email_schema } = require("../schema/email");
 
 // 发送信件的路由
 router.post("/send", expressJoi(send_email_schema), email_handler.sendEmail);
+
+// 读取收件箱中邮件的路由
+router.get("/read/received", email_handler.read_receiveMail);
 
 module.exports = router;

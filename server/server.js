@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-31 09:11:09
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-02 14:48:19
+ * @LastEditTime: 2023-04-02 18:47:04
  * @FilePath: \NMail\server\server.js
  * @Description: 服务器主入口
  */
@@ -53,8 +53,8 @@ server.use("/api", userRouter);
 const userinfoRouter = require("./router/userinfo");
 server.use("/my", userinfoRouter);
 // 导入并注册邮件路由中间件
-const sendEmailRouter = require("./router/email");
-server.use("/my/email", sendEmailRouter);
+const emailRouter = require("./router/email");
+server.use("/my/email", emailRouter);
 
 // 定义并挂载错误级别的中间件
 server.use((err, req, res, next) => {
