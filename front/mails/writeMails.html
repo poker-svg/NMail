@@ -4,7 +4,80 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>南京大学-写信</title>
+
+    <!-- 导入layui.css样式表 -->
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css" />
+    <!-- 导入cropper.css -->
+    <link rel="stylesheet" href="../assets/lib/cropper/cropper.css" />
+    <!-- 导入自定义writeMails.css样式表 -->
+    <link rel="stylesheet" href="../assets/css/mails/writeMails.css" />
   </head>
-  <body></body>
+
+  <body>
+    <div class="layui-card">
+      <div class="layui-card-header">南京大学-写信</div>
+      <div class="layui-card-body">
+        <form class="layui-form" id="form-send_Email" lay-filter="formPublish">
+          <!-- 第1行 收件人 -->
+          <div class="layui-form-item">
+            <label class="layui-form-label">收件人</label>
+            <div class="layui-input-block">
+              <input
+                type="text"
+                name="receiver"
+                required
+                lay-verify="required"
+                placeholder="请输入收件人"
+                autocomplete="off"
+                class="layui-input"
+              />
+            </div>
+          </div>
+          <!-- 第2行 主题 -->
+          <div class="layui-form-item">
+            <label class="layui-form-label">主题</label>
+            <div class="layui-input-block">
+              <input
+                type="text"
+                name="title"
+                required
+                lay-verify="required"
+                placeholder="请输入主题"
+                autocomplete="off"
+                class="layui-input"
+              />
+            </div>
+          </div>
+          <!-- 第3行 正文 -->
+          <div class="layui-form-item">
+            <label class="layui-form-label">文章内容</label>
+            <div class="layui-input-block" style="height: 400px">
+              <textarea name="content"></textarea>
+            </div>
+          </div>
+          <!-- 第4行 发信 -->
+          <div class="layui-form-item">
+            <div class="layui-input-block">
+              <button class="layui-btn" lay-submit id="sendBtn">发送</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="sender">
+          <span id="email_sender">发件人 ***</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/js/ajaxPre.js"></script>
+    <script src="../assets/lib/template-web.js"></script>
+    <!-- 富文本编辑器依赖的JS -->
+    <script src="../assets/lib/tinymce/tinymce.min.js"></script>
+    <script src="../assets/lib/tinymce/tinymce_setup.js"></script>
+    <!-- 写信有关的js -->
+    <script src="../assets/js/mails/writeMails.js"></script>
+  </body>
 </html>

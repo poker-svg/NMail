@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-31 09:49:26
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-02 00:34:56
+ * @LastEditTime: 2023-04-02 15:14:51
  * @FilePath: \NMail\server\router_handler\user.js
  * @Description: 后端的用户处理器
  */
@@ -49,12 +49,9 @@ exports.regUserHandler = (req, res) => {
   // 检查用户名是否被占用
   const sqlStr = "select * from users where username=?";
   database.query(sqlStr, userinfo.username, (err, results) => {
-    if (err) {
-      return res.response_data(err);
-    }
-    if (results.length > 0) {
+    if (err) return res.response_data(err);
+    if (results.length > 0)
       return res.response_data("用户名被占用，请更换其他用户名！");
-    }
 
     // 对密码进行加密
     userinfo.password = bcrypt.hashSync(userinfo.password, 10);

@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-04-01 12:55:52
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-02 00:35:16
+ * @LastEditTime: 2023-04-02 13:02:15
  * @FilePath: \NMail\server\router_handler\userinfo.js
  * @Description: 用户信息相关的处理函数
  */
@@ -192,7 +192,7 @@ exports.updatePwd = (req, res) => {
 // 更新用户头像的处理函数
 /**
  *
- * @api {POST} /my/user_pic 更换头像
+ * @api {POST} /my/update/user_pic 更换头像
  * @apiName 更换头像接口
  * @apiGroup 个人中心
  * @apiVersion  1.0.0
