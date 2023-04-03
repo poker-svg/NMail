@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-29 17:10:41
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-02 18:39:35
+ * @LastEditTime: 2023-04-03 09:50:09
  * @FilePath: \NMail\front\mails\readMails.html
  * @Description: 读取Email的界面
 -->
@@ -29,7 +29,7 @@
             <col width="150" />
             <col />
             <col width="150" />
-            <col width="250" />
+            <col width="150" />
           </colgroup>
           <thead>
             <tr>
@@ -45,6 +45,30 @@
         <div id="pageBox"></div>
       </div>
     </div>
+
+    <script type="text/html" id="tpl-table">
+      {{each data}}
+      <tr>
+        <td>{{$value.sender}}</td>
+        <td>{{$value.title}}</td>
+        <td>{{$value.time}}</td>
+        <td>
+          <button
+            class="layui-btn layui-btn-xs check_content_btn"
+            data-id="{{$value.id}}"
+          >
+            查看
+          </button>
+          <button
+            class="layui-btn layui-btn-danger layui-btn-xs delete_email_btn"
+            data-id="{{$value.id}}"
+          >
+            删除
+          </button>
+        </td>
+      </tr>
+      {{/each}}
+    </script>
 
     <!-- 导入第三方 js 插件 -->
     <script src="../assets/lib/layui/layui.all.js"></script>

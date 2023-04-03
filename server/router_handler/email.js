@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-04-02 21:00:00
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-02 21:00:00
+ * @LastEditTime: 2023-04-03 10:18:27
  * @FilePath: \NMail\server\router_handler\email.js
  * @Description: 后端的用户处理器
  */
@@ -130,10 +130,7 @@ exports.sendEmail = (req, res) => {
  * @apiSuccess (返回参数说明) {array} data 邮件数组，某一页的切片
  * @apiSuccess (返回参数说明) {int} data:id 邮件id
  * @apiSuccess (返回参数说明) {string} data:sender 发送方邮箱地址
- * @apiSuccess (返回参数说明) {string} data:receiver 接收方邮箱地址
  * @apiSuccess (返回参数说明) {string} data:title 邮件主题
- * @apiSuccess (返回参数说明) {string} data:content 邮件内容
- * @apiSuccess (返回参数说明) {string} data:is_delete 邮件是否被删除(必定未被删除) 0：未被删除；1：已被删除
  * @apiSuccess (返回参数说明) {string} data:is_readed 邮件是否被读取 0：未被读取；1：已被读取
  * @apiSuccess (返回参数说明) {string} data:time 邮件被接收时间 year/month/day hour:minute:second
  * @apiSuccess (返回参数说明) {int} total 收件箱中的邮件总数
@@ -152,20 +149,14 @@ exports.sendEmail = (req, res) => {
  *      {
  *         "id": 1,
  *         "sender": "201220028@smail.nju.edu.cn",
- *         "receiver": "X-ray<123456@smail.nju.edu.cn>",
  *         "title": "test1",
- *         "content": "test1",
- *         "is_delete": 0,
  *         "is_readed": 0,
  *         "time": "2023/4/2 20:02:48"
  *      },
  *      {
  *         "id": 2,
  *         "sender": "201220028@smail.nju.edu.cn",
- *         "receiver": "X-ray<123456@smail.nju.edu.cn>",
  *         "title": "test2",
- *         "content": "test2",
- *         "is_delete": 0,
  *         "is_readed": 0,
  *         "time": "2023/4/2 20:02:49"
  *      }
@@ -175,7 +166,7 @@ exports.sendEmail = (req, res) => {
  */
 exports.read_receiveMail = (req, res) => {
   // 计算局部切片区域
-  const list_info = req.body;
+  const list_info = req.query;
   const pagenum = parseInt(list_info.pagenum);
   const pagesize = parseInt(list_info.pagesize);
   const start = (pagenum - 1) * pagesize;
@@ -195,7 +186,8 @@ exports.read_receiveMail = (req, res) => {
     const receiver_name = `${userNickname}<${userName}@smail.nju.edu.cn>`;
 
     // 根据用户的email地址，在收件箱的数据库中取出此用户的所有邮件，并按请求参数进行切片后返回
-    const get_emails_sqlStr = `select * from receive_emails where receiver=? and is_delete=0`;
+    const get_emails_sqlStr =
+      "select id, sender, title, is_readed, time from receive_emails where receiver=? and is_delete=0";
 
     database.query(get_emails_sqlStr, receiver_name, (err, emails) => {
       if (err) return res.response_data(err);
@@ -206,6 +198,73 @@ exports.read_receiveMail = (req, res) => {
         data: emails.slice(start, end),
         total: emails.length,
       });
+    });
+  });
+};
+
+// 根据id获取邮件详情
+/**
+ *
+ * @api {GET} /my/email/read/received/:id 读取收件箱中特定邮件
+ * @apiName 读取收件箱中特定邮件接口
+ * @apiGroup 邮件
+ * @apiVersion  1.0.0
+ *
+ * @apiHeader {String} Authorization 包含用户信息的token
+ *
+ * @apiHeaderExample {json} Header-Example:
+ * {
+ *    "Authorization"  :  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBhc3N3b3JkIjoiIiwibmlja25hbWUiOiLms6Xlt7Tlt7QiLCJlbWFpbCI6Im5pYmFiYUBpdGNhc3QuY24iLCJ1c2VyX3BpYyI6IiIsImlhdCI6MTU3ODAzNjY4MiwiZXhwIjoxNTc4MDcyNjgyfQ.Mwq7GqCxJPK-EA8LNrtMG04llKdZ33S9KBL3XeuBxuI
+ * }
+ *
+ * @apiParam  {int} id 邮件id，这是一个URL Path Variables
+ *
+ * @apiSuccess (返回参数说明) {int} status 请求是否成功，0：成功；1：失败
+ * @apiSuccess (返回参数说明) {string} message 请求结果的描述消息
+ * @apiSuccess (返回参数说明) {object} data 邮件数据
+ * @apiSuccess (返回参数说明) {int} data:id 邮件id
+ * @apiSuccess (返回参数说明) {string} data:sender 发送方邮箱地址
+ * @apiSuccess (返回参数说明) {string} data:receiver 接收方邮箱地址
+ * @apiSuccess (返回参数说明) {string} data:title 邮件主题
+ * @apiSuccess (返回参数说明) {string} data:content 邮件内容
+ * @apiSuccess (返回参数说明) {string} data:is_delete 邮件是否被删除(必定未被删除) 0：未被删除；1：已被删除
+ * @apiSuccess (返回参数说明) {string} data:is_readed 邮件是否被读取 0：未被读取；1：已被读取
+ * @apiSuccess (返回参数说明) {string} data:time 邮件被接收时间 year/month/day hour:minute:second
+ *
+ * @apiParamExample  {json} Request-Example:
+ * {
+ *    http://127.0.0.1:3007/my/email/read/received/:id
+ * }
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * {
+ *     "status": 0,
+ *     "message": "查询邮件详情成功！",
+ *     "data": {
+ *        "id": 1,
+ *        "sender": "201220028@smail.nju.edu.cn",
+ *        "receiver": "X-ray<123456@smail.nju.edu.cn>",
+ *        "title": "test1",
+ *        "content": "test1",
+ *        "is_delete": 0,
+ *        "is_readed": 0,
+ *        "time": "2023/4/2 20:02:48"
+ *     }
+ * }
+ */
+exports.get_email_details = (req, res) => {
+  // 根据邮件id，在收件箱的数据库中取出对应邮件并返回
+  const get_email_details_sqlStr = "select * from receive_emails where id=?";
+
+  database.query(get_email_details_sqlStr, req.params.id, (err, email) => {
+    if (err) return res.response_data(err);
+    if (email.length !== 1) return res.response_data("此邮件不存在！");
+    if (email[0].is_delete === 1) return res.response_data("此邮件已被删除！");
+
+    res.send({
+      status: 0,
+      message: "查询邮件详情成功！",
+      data: email[0],
     });
   });
 };
