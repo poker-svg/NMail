@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-04-02 21:00:00
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-03 22:14:30
+ * @LastEditTime: 2023-04-03 22:37:35
  * @FilePath: \NMail\server\router_handler\email.js
  * @Description: 后端的用户处理器
  */
@@ -314,4 +314,9 @@ exports.delete_email = (req, res) => {
       message: "删除邮件成功！",
     });
   });
+};
+
+// 监听新邮件的来临
+exports.listen_email = function (req, res) {
+  console.log("ok");
 };
