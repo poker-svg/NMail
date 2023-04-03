@@ -1,0 +1,48 @@
+<!--
+ * @Author: Xin 201220028@smail.nju.edu.cn
+ * @Date: 2023-04-03 10:53:57
+ * @LastEditors: Xin 201220028@smail.nju.edu.cn
+ * @LastEditTime: 2023-04-03 11:36:01
+ * @FilePath: \NMail\front\mails\mailContainer.html
+ * @Description: 查看邮件的界面
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>南京大学-查看邮件</title>
+
+    <!-- 导入layui.css样式表 -->
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css" />
+    <!-- 导入自定义writeMails.css样式表 -->
+    <link rel="stylesheet" href="../assets/css/mails/mailContainer.css" />
+  </head>
+  <body>
+    <div id="email_container">
+      <div id="email_header" class="layui-card">
+        <div class="layui-card-header" id="email_title">Title</div>
+        <div class="layui-card-body" id="email_info">
+          <div id="sender">发件人：</div>
+          <div id="time">时 间：</div>
+          <div id="receiver">收件人：</div>
+        </div>
+      </div>
+
+      <div id="content_block" class="layui-input-block">
+        <textarea id="content"></textarea>
+      </div>
+    </div>
+
+    <!-- 导入第三方插件 -->
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/js/ajaxPre.js"></script>
+    <!-- 富文本编辑器依赖的JS -->
+    <script src="../assets/lib/tinymce/tinymce.min.js"></script>
+    <script src="../assets/lib/tinymce/tinymce_setup.js"></script>
+    <!-- 导入自定义js -->
+    <script src="../assets/js/mails/mailContainer.js"></script>
+  </body>
+</html>

@@ -134,7 +134,7 @@ a {
 .user_login_bottom_line {
   width: 47px;
   height: 2px;
-  background-color: #9c199a;
+  background-color: #9c199a; /*南大紫*/
   /* margin: 12px auto 4px; */
   margin: 8px auto 4px;
 }

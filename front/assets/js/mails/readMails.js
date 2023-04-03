@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-30 13:49:37
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-03 10:35:53
+ * @LastEditTime: 2023-04-03 11:45:02
  * @FilePath: \NMail\front\assets\js\mails\readMails.js
  * @Description: 前端读取收件箱操作
  */
@@ -10,7 +10,7 @@ $(function () {
   let default_query = {
     // 默认读取的页面参数
     pagenum: 1, // 页码数
-    pagesize: 2, // 每页显示的信件条数
+    pagesize: 5, // 每页显示的信件条数
   };
 
   initReceiveMailsList();
@@ -62,4 +62,9 @@ $(function () {
       },
     });
   }
+
+  $("tbody").on("click", ".check_content_btn", function (e) {
+    let id = $(this).attr("data-id");
+    location.href = `/front/mails/mailContainer.html?id=${id}`;
+  });
 });
