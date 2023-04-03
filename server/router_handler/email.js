@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-04-02 21:00:00
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-03 10:18:27
+ * @LastEditTime: 2023-04-03 22:14:30
  * @FilePath: \NMail\server\router_handler\email.js
  * @Description: 后端的用户处理器
  */
@@ -122,8 +122,8 @@ exports.sendEmail = (req, res) => {
  *    "Authorization"  :  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBhc3N3b3JkIjoiIiwibmlja25hbWUiOiLms6Xlt7Tlt7QiLCJlbWFpbCI6Im5pYmFiYUBpdGNhc3QuY24iLCJ1c2VyX3BpYyI6IiIsImlhdCI6MTU3ODAzNjY4MiwiZXhwIjoxNTc4MDcyNjgyfQ.Mwq7GqCxJPK-EA8LNrtMG04llKdZ33S9KBL3XeuBxuI
  * }
  *
- * @apiParam  {int} pagenum 页码值
- * @apiParam  {int} pagesize 每页显示邮件的数量
+ * @apiParam  {string} pagenum 页码值
+ * @apiParam  {string} pagesize 每页显示邮件的数量
  *
  * @apiSuccess (返回参数说明) {int} status 请求是否成功，0：成功；1：失败
  * @apiSuccess (返回参数说明) {string} message 请求结果的描述消息
@@ -217,7 +217,7 @@ exports.read_receiveMail = (req, res) => {
  *    "Authorization"  :  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBhc3N3b3JkIjoiIiwibmlja25hbWUiOiLms6Xlt7Tlt7QiLCJlbWFpbCI6Im5pYmFiYUBpdGNhc3QuY24iLCJ1c2VyX3BpYyI6IiIsImlhdCI6MTU3ODAzNjY4MiwiZXhwIjoxNTc4MDcyNjgyfQ.Mwq7GqCxJPK-EA8LNrtMG04llKdZ33S9KBL3XeuBxuI
  * }
  *
- * @apiParam  {int} id 邮件id，这是一个URL Path Variables
+ * @apiParam  {string} id 邮件id，这是一个URL Path Variables
  *
  * @apiSuccess (返回参数说明) {int} status 请求是否成功，0：成功；1：失败
  * @apiSuccess (返回参数说明) {string} message 请求结果的描述消息
@@ -265,6 +265,53 @@ exports.get_email_details = (req, res) => {
       status: 0,
       message: "查询邮件详情成功！",
       data: email[0],
+    });
+  });
+};
+
+// 根据id删除邮件
+/**
+ *
+ * @api {GET} /my/email/delete/received/:id 删除收件箱中特定邮件
+ * @apiName 删除收件箱中特定邮件接口
+ * @apiGroup 邮件
+ * @apiVersion  1.0.0
+ *
+ * @apiHeader {String} Authorization 包含用户信息的token
+ *
+ * @apiHeaderExample {json} Header-Example:
+ * {
+ *    "Authorization"  :  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBhc3N3b3JkIjoiIiwibmlja25hbWUiOiLms6Xlt7Tlt7QiLCJlbWFpbCI6Im5pYmFiYUBpdGNhc3QuY24iLCJ1c2VyX3BpYyI6IiIsImlhdCI6MTU3ODAzNjY4MiwiZXhwIjoxNTc4MDcyNjgyfQ.Mwq7GqCxJPK-EA8LNrtMG04llKdZ33S9KBL3XeuBxuI
+ * }
+ *
+ * @apiParam  {string} id 要删除的邮件id，这是一个URL Path Variables
+ *
+ * @apiSuccess (返回参数说明) {int} status 请求是否成功，0：成功；1：失败
+ * @apiSuccess (返回参数说明) {string} message 请求结果的描述消息
+ *
+ * @apiParamExample  {json} Request-Example:
+ * {
+ *    http://127.0.0.1:3007/my/email/read/received/:id
+ * }
+ *
+ * @apiSuccessExample {json} Success-Response:
+ * {
+ *     "status": 0,
+ *     "message": "删除邮件成功！"
+ * }
+ */
+exports.delete_email = (req, res) => {
+  // 根据邮件id，在收件箱的数据库中取出对应邮件并返回
+  const delete_email_sqlStr =
+    "update receive_emails set is_delete = 1 where id = ?";
+
+  database.query(delete_email_sqlStr, req.params.id, (err, email) => {
+    if (err) return res.response_data(err);
+    if (email.affectedRows !== 1) return res.response_data("此邮件不存在！");
+
+    res.send({
+      status: 0,
+      message: "删除邮件成功！",
     });
   });
 };

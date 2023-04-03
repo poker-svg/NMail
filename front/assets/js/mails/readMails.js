@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-30 13:49:37
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-03 11:45:02
+ * @LastEditTime: 2023-04-03 22:10:33
  * @FilePath: \NMail\front\assets\js\mails\readMails.js
  * @Description: 前端读取收件箱操作
  */
@@ -66,5 +66,34 @@ $(function () {
   $("tbody").on("click", ".check_content_btn", function (e) {
     let id = $(this).attr("data-id");
     location.href = `/front/mails/mailContainer.html?id=${id}`;
+  });
+
+  $("tbody").on("click", ".delete_email_btn", function (e) {
+    let len = $(".delete_email_btn").length;
+    let id = $(this).attr("data-id");
+
+    layui.layer.confirm(
+      "确认删除?",
+      { icon: 3, title: "提示" },
+      function (index) {
+        $.ajax({
+          method: "GET",
+          url: `/my/email/delete/received/${id}`,
+          success: function (res) {
+            if (res.status !== 0) {
+              return layui.layer.msg(res.msg);
+            }
+
+            if (len === 1) {
+              default_query.pagenum =
+                default_query.pagenum === 1 ? 1 : default_query.pagenum - 1;
+            }
+
+            initReceiveMailsList();
+          },
+        });
+        layui.layer.close(index);
+      }
+    );
   });
 });

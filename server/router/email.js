@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-04-02 14:42:50
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-03 10:07:15
+ * @LastEditTime: 2023-04-03 21:55:02
  * @FilePath: \NMail\server\router\email.js
  * @Description: email处理的路由模块
  */
@@ -25,5 +25,8 @@ router.get("/read/received", email_handler.read_receiveMail);
 
 // 读取收件箱中某特定邮件的详细信息的路由
 router.get("/read/received/:id", email_handler.get_email_details);
+
+// 删除收件箱中某特定邮件的路由
+router.get("/delete/received/:id", email_handler.delete_email);
 
 module.exports = router;
