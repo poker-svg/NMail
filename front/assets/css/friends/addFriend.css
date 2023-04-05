@@ -1,0 +1,22 @@
+#company {
+  width: 40%;
+  float: left;
+}
+
+#apartment {
+  width: 25%;
+  float: left;
+  margin-left: 4%;
+}
+
+#work {
+  width: 25%;
+  float: left;
+  margin-left: 4%;
+}
+
+.layui-form {
+  margin-top: 50px;
+  width: 50%;
+  text-align: center;
+}

@@ -28,8 +28,8 @@
   },
   "apidoc": {
     "title": "N-Mail API",
-    "url": "http://127.0.0.1:8091",
-    "sampleUrl": "http://127.0.0.1:8091",
+    "url": "http://127.0.0.1:3007",
+    "sampleUrl": "http://127.0.0.1:3007",
     "header": {
       "title": "文档说明",
       "filename": "header.md"

@@ -169,7 +169,7 @@ exports.getAllFriendsHandler = (req, res) => {
  *    "Authorization"  :  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBhc3N3b3JkIjoiIiwibmlja25hbWUiOiLms6Xlt7Tlt7QiLCJlbWFpbCI6Im5pYmFiYUBpdGNhc3QuY24iLCJ1c2VyX3BpYyI6IiIsImlhdCI6MTU3ODAzNjY4MiwiZXhwIjoxNTc4MDcyNjgyfQ.Mwq7GqCxJPK-EA8LNrtMG04llKdZ33S9KBL3XeuBxuI
  * }
  *
- * @apiParam  {int} friend_id 朋友id
+ * @apiParam  {int} friend_id 朋友id，URL参数(query)
  *
  * @apiSuccess (返回参数说明) {int} status 请求是否成功，0：成功，1：失败
  * @apiSuccess (返回参数说明) {string} message 请求结果的描述消息

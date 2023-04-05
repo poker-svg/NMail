@@ -19,5 +19,135 @@
   </head>
   <body>
     <a href="./myFriends.html" class="layui-btn">查看联系人</a>
+
+    <form class="layui-form" id="add_friend_form">
+      <div class="layui-form-item">
+        <label class="layui-form-label">朋友姓名</label>
+        <div class="layui-input-block">
+          <input
+            type="text"
+            id="name"
+            required
+            lay-verify="required"
+            placeholder="姓名"
+            autocomplete="off"
+            class="layui-input"
+          />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">个人邮箱</label>
+        <div class="layui-input-block">
+          <input
+            type="text"
+            id="email"
+            required
+            lay-verify="required"
+            placeholder="邮箱地址"
+            autocomplete="off"
+            class="layui-input"
+          />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">移动电话</label>
+        <div class="layui-input-block">
+          <input
+            type="text"
+            id="phone_number"
+            placeholder="电话"
+            autocomplete="off"
+            class="layui-input"
+          />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">家庭住址</label>
+        <div class="layui-input-block">
+          <input
+            type="text"
+            id="home_address"
+            placeholder="住址"
+            autocomplete="off"
+            class="layui-input"
+          />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">生日</label>
+        <div class="layui-input-block">
+          <input
+            type="text"
+            id="birthday"
+            placeholder="年-月-日（需补零）"
+            autocomplete="off"
+            class="layui-input"
+          />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">QQ</label>
+        <div class="layui-input-block">
+          <input
+            type="text"
+            id="qq"
+            placeholder="QQ号码"
+            autocomplete="off"
+            class="layui-input"
+          />
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">工作</label>
+        <div class="layui-input-block">
+          <input
+            type="text"
+            id="company"
+            placeholder="公司"
+            autocomplete="off"
+            class="layui-input"
+          />
+          <input
+            type="text"
+            id="apartment"
+            placeholder="部门"
+            autocomplete="off"
+            class="layui-input"
+          />
+          <input
+            type="text"
+            id="work"
+            placeholder="职位"
+            autocomplete="off"
+            class="layui-input"
+          />
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">备注</label>
+        <div class="layui-input-block">
+          <textarea
+            id="comment"
+            placeholder="备注"
+            class="layui-textarea"
+          ></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit lay-filter="formDemo">
+            立即提交
+          </button>
+          <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- 导入第三方插件 -->
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/js/ajaxPre.js"></script>
+    <!-- 导入自定义插件 -->
+    <script src="../assets/js/friend/addFriend.js"></script>
   </body>
 </html>

@@ -21,29 +21,67 @@
     <a href="./addFriend.html" class="layui-btn">添加联系人</a>
 
     <div id="container">
-      <!-- 朋友表格 -->
-      <div id="friends_table_container">
-        <table class="layui-table" id="friends_table">
-          <colgroup>
-            <col width="150" />
-            <col width="200" />
-            <col />
-            <col width="200" />
-          </colgroup>
-          <thead>
-            <tr>
-              <th>姓名</th>
-              <th>邮箱</th>
-              <th>工作部门</th>
-              <th>电话</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+      <div class="layui-card" id="friends_table_container">
+        <div class="layui-card-header">南京大学-通讯录</div>
+        <div class="layui-card-body">
+          <!-- 朋友表格 -->
+          <table class="layui-table" id="friends_table">
+            <colgroup>
+              <col width="30" />
+              <col width="150" />
+              <col width="200" />
+              <col />
+              <col width="200" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>姓名</th>
+                <th>邮箱</th>
+                <th>工作部门</th>
+                <th>电话</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <!-- 分页区域 -->
+          <div id="pageBox"></div>
+        </div>
       </div>
 
       <!-- 朋友详细信息 -->
-      <div id="frined_info_container">朋友信息</div>
+      <div id="frined_info_container">
+        朋友信息
+        <div id="name">姓名</div>
+        <div id="email">邮箱</div>
+        <div id="phone_number">电话号码</div>
+        <div id="home_address">家庭住址</div>
+        <div id="birthday">生日</div>
+        <div id="qq">QQ</div>
+        <div id="company-apartment-work">工作职位</div>
+        <div id="comment">备注</div>
+      </div>
     </div>
+
+    <script type="text/html" id="tpl-table">
+      {{each data}}
+      <tr class="friend" data-id="{{$value.id}}">
+        <td>{{$value.id}}</td>
+        <td>{{$value.name}}</td>
+        <td>{{$value.email}}</td>
+        <td>{{$value.company}}-{{$value.apartment}}-{{$value.work}}</td>
+        <td>{{$value.phone_number}}</td>
+      </tr>
+      {{/each}}
+    </script>
+
+    <!-- 导入第三方 js 插件 -->
+    <script src="../assets/lib/layui/layui.all.js"></script>
+    <script src="../assets/lib/jquery.js"></script>
+    <script src="../assets/js/ajaxPre.js"></script>
+    <script src="../assets/lib/template-web.js"></script>
+
+    <!-- 导入自己的JS脚本 -->
+    <script src="../assets/js/friend/myFriends.js"></script>
   </body>
 </html>
