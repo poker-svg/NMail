@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-31 15:05:34
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-01 23:35:51
+ * @LastEditTime: 2023-04-05 14:54:52
  * @FilePath: \NMail\server\schema\user.js
  * @Description: 用户数据验证模块，包括用户登录、注册、信息修改接口所需的数据验证
  */

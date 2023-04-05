@@ -1,0 +1,10 @@
+#friends_table_container {
+  width: 70%;
+  float: left;
+}
+
+#frined_info_container {
+  width: 30%;
+  float: right;
+  text-align: center;
+}

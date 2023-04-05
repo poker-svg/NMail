@@ -4,7 +4,46 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>南京大学-通讯录</title>
+
+    <!-- 导入layui.css -->
+    <link rel="stylesheet" href="../assets/lib/layui/css/layui.css" />
+    <!-- 导入icon -->
+    <link rel="stylesheet" href="../assets/fonts/iconfont.css" />
+    <!-- 导入自定义css样式表 -->
+    <link
+      rel="stylesheet"
+      href="../assets/css/friends/myFriends.css"
+      type="text/css"
+    />
   </head>
-  <body></body>
+  <body>
+    <a href="./addFriend.html" class="layui-btn">添加联系人</a>
+
+    <div id="container">
+      <!-- 朋友表格 -->
+      <div id="friends_table_container">
+        <table class="layui-table" id="friends_table">
+          <colgroup>
+            <col width="150" />
+            <col width="200" />
+            <col />
+            <col width="200" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>姓名</th>
+              <th>邮箱</th>
+              <th>工作部门</th>
+              <th>电话</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- 朋友详细信息 -->
+      <div id="frined_info_container">朋友信息</div>
+    </div>
+  </body>
 </html>
