@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:18:44
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-03-30 13:38:23
+ * @LastEditTime: 2023-04-05 20:46:58
  * @FilePath: \NMail\src\assets\js\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -33,7 +33,9 @@ function getUserInfo() {
     method: "GET",
     success: function (res) {
       if (res.status !== 0) {
-        return layui.layer.msg(res.msg);
+        layui.layer.msg(res.msg);
+        location.href = "/front/login.html";
+        return;
       }
       renderAvatar(res.data);
     },
