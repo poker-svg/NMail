@@ -2,9 +2,9 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:18:44
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-03-28 13:17:46
+ * @LastEditTime: 2023-04-05 21:50:30
  * @FilePath: \NMail\assets\js\login.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description: 登录注册的前端操作
  */
 $(function () {
   // 登录界面切换为注册界面

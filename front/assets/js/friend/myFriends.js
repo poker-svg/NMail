@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-04-05 17:44:58
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-05 18:59:21
+ * @LastEditTime: 2023-04-05 21:46:41
  * @FilePath: \NMail\front\assets\js\friend\myFriends.js
  * @Description: 通讯录查看朋友列表前端JS操作
  */
@@ -73,22 +73,16 @@ $(function () {
         }
 
         // 展示朋友信息
-        $("#frined_info_container #name").text("姓名: " + res.data.name);
-        $("#frined_info_container #email").text("邮箱: " + res.data.email);
-        $("#frined_info_container #phone_number").text(
-          "电话号码: " + res.data.phone_number
-        );
-        $("#frined_info_container #home_address").text(
-          "家庭住址: " + res.data.home_address
-        );
-        $("#frined_info_container #birthday").text(
-          "生日: " + res.data.birthday
-        );
-        $("#frined_info_container #qq").text("QQ: " + res.data.qq);
+        $("#frined_info_container #name").text(res.data.name);
+        $("#frined_info_container #email").text(res.data.email);
+        $("#frined_info_container #phone_number").text(res.data.phone_number);
+        $("#frined_info_container #home_address").text(res.data.home_address);
+        $("#frined_info_container #birthday").text(res.data.birthday);
+        $("#frined_info_container #qq").text(res.data.qq);
         $("#frined_info_container #company-apartment-work").text(
-          "工作职位" + res.data.company + res.data.apartment + res.data.work
+          res.data.company + res.data.apartment + res.data.work
         );
-        $("#frined_info_container #comment").text("备注: " + res.data.comment);
+        $("#frined_info_container #comment").text(res.data.comment);
       },
     });
   }

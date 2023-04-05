@@ -42,7 +42,7 @@
             type="text"
             id="email"
             required
-            lay-verify="required"
+            lay-verify="required|email"
             placeholder="邮箱地址"
             autocomplete="off"
             class="layui-input"
@@ -55,6 +55,7 @@
           <input
             type="text"
             id="phone_number"
+            lay-verify="phone"
             placeholder="电话"
             autocomplete="off"
             class="layui-input"
@@ -66,7 +67,6 @@
         <div class="layui-input-block">
           <input
             type="text"
-            id="home_address"
             placeholder="住址"
             autocomplete="off"
             class="layui-input"
@@ -79,6 +79,7 @@
           <input
             type="text"
             id="birthday"
+            lay-verify="birthday"
             placeholder="年-月-日（需补零）"
             autocomplete="off"
             class="layui-input"
@@ -91,6 +92,7 @@
           <input
             type="text"
             id="qq"
+            lay-verify="qq"
             placeholder="QQ号码"
             autocomplete="off"
             class="layui-input"
