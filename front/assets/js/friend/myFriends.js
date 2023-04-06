@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-04-05 17:44:58
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-05 21:46:41
+ * @LastEditTime: 2023-04-06 12:14:16
  * @FilePath: \NMail\front\assets\js\friend\myFriends.js
  * @Description: 通讯录查看朋友列表前端JS操作
  */
@@ -15,9 +15,21 @@ $(function () {
 
   initFriendsList();
 
+  // 绑定表格点击事件，显示对应的朋友信息
   $("tbody").on("click", ".friend", function (e) {
     let friendId = $(this).attr("data-id");
     showFriendInfoById(friendId);
+
+    $("#frined_info_container").attr(
+      "class",
+      "layui-collapse animate__animated animate__zoomIn"
+    );
+  });
+
+  $("#frined_info_container").each(function () {
+    $(this)[0].addEventListener("animationend", function () {
+      $(this).attr("class", "layui-collapse");
+    });
   });
 
   // 获取朋友列表数据

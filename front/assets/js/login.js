@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:18:44
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-05 21:50:30
+ * @LastEditTime: 2023-04-06 12:29:01
  * @FilePath: \NMail\assets\js\login.js
  * @Description: 登录注册的前端操作
  */
@@ -11,12 +11,36 @@ $(function () {
   $("#link_register_page").on("click", function () {
     $(".login_page").hide();
     $(".register_page").show();
+
+    // 添加动画效果
+    $("#register_page_animate_controller").attr(
+      "class",
+      "animate__animated animate__backInUp"
+    );
   });
 
   // 注册界面切换为登录界面
   $("#link_login_page").on("click", function () {
     $(".register_page").hide();
     $(".login_page").show();
+
+    // 添加动画效果
+    $("#login_page_animate_controller").attr(
+      "class",
+      "animate__animated animate__backInUp"
+    );
+  });
+
+  // 清除动画效果
+  $("#login_page_animate_controller").each(function () {
+    $(this)[0].addEventListener("animationend", function () {
+      $(this).attr("class", "");
+    });
+  });
+  $("#register_page_animate_controller").each(function () {
+    $(this)[0].addEventListener("animationend", function () {
+      $(this).attr("class", "");
+    });
   });
 
   var form = layui.form;
