@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-31 09:32:15
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-01 23:18:02
+ * @LastEditTime: 2023-04-08 12:37:50
  * @FilePath: \NMail\server\router\user.js
  * @Description: 用户信息处理的路由模块
  */
@@ -29,7 +29,7 @@ router.post(
   expressJoi(update_userinfo_schema),
   userinfo_handler.updateUserInfo
 );
-// 更新用户面膜的路由
+// 更新用户密码的路由
 router.post(
   "/updatepwd",
   expressJoi(update_password_schema),
