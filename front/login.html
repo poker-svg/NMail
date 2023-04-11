@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:21:24
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-06 12:21:19
+ * @LastEditTime: 2023-04-11 11:02:00
  * @FilePath: \NMail\login.html
  * @Description: 用户登录和注册界面
 -->
@@ -84,6 +84,21 @@
                       autocomplete="off"
                       class="layui-inputuser_password_input user_password_input"
                     />
+                  </div>
+
+                  <!-- 验证码 -->
+                  <div align="center" class="layui-form-item login_box03">
+                    <input
+                      type="text"
+                      id="login_captcha"
+                      name="login_captcha"
+                      required
+                      lay-verify="required|captcha"
+                      placeholder="请输入验证码"
+                      autocomplete="off"
+                      class="layui-input captcha_input"
+                    />
+                    <a href="javascript:;" id="captcha_img">验证码</a>
                   </div>
 
                   <div class="warning" align="left">

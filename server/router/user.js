@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-31 09:32:15
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-03-31 19:01:08
+ * @LastEditTime: 2023-04-11 09:08:07
  * @FilePath: \NMail\server\router\user.js
  * @Description: 用户的路由模块
  */
@@ -26,6 +26,9 @@ router.post(
 
 // 登录
 router.post("/login", expressJoi(reg_login_schema), userHandler.loginHandler);
+
+// 验证码
+router.get("/captcha", userHandler.captchaHandler);
 
 // 向外暴露路由
 module.exports = router;

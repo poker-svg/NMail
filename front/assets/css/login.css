@@ -193,6 +193,16 @@ a {
   margin-top: 20px;
 }
 
+/* 第三个登录box，用于填写验证码 */
+.login_box03 {
+  background: url(../images/login/password.png) no-repeat;
+  background-size: 100%;
+  background-position: bottom center;
+  width: 351;
+  height: 49px;
+  margin-top: 20px;
+}
+
 /* 登陆界面：用户名输入框 */
 #login_username {
   font-size: 16px;
@@ -251,6 +261,37 @@ a {
   outline: 0;
   margin-top: 0px;
   margin-left: 40px;
+}
+
+/* 登陆界面：验证码 */
+#login_captcha {
+  font-size: 16px;
+}
+
+/* 验证码输入框 */
+.captcha_input {
+  color: rgb(65, 67, 66);
+  width: 146px;
+  height: 49px;
+  border: none;
+  line-height: 49px;
+  vertical-align: middle;
+  margin-top: 0px;
+  margin-left: 40px;
+  outline: 0;
+  float: left;
+}
+
+/* 验证码图片 */
+#captcha_img {
+  color: rgb(65, 67, 66);
+  width: 150px;
+  height: 50px;
+  border: none;
+  line-height: 49px;
+  vertical-align: middle;
+  outline: 0;
+  float: right;
 }
 
 /* 警告声明 */

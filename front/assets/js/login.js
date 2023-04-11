@@ -2,11 +2,18 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-03-26 19:18:44
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-06 12:29:01
+ * @LastEditTime: 2023-04-11 11:03:57
  * @FilePath: \NMail\assets\js\login.js
  * @Description: 登录注册的前端操作
  */
 $(function () {
+  initCaptcha();
+
+  // 点击验证码刷新
+  $("#captcha_img").on("click", function () {
+    initCaptcha();
+  });
+
   // 登录界面切换为注册界面
   $("#link_register_page").on("click", function () {
     $(".login_page").hide();
@@ -43,18 +50,26 @@ $(function () {
     });
   });
 
-  var form = layui.form;
-  var layer = layui.layer;
+  let form = layui.form;
+  let layer = layui.layer;
+  let captcha_text;
 
   // 表单前端验证（密码限制、确认密码限制）
   form.verify({
     pass: [/^[\S]{6,12}$/, "密码必须6到12位，且不能出现空格"],
 
     repass: function (newpwd) {
-      var oldpwd = $(".register_page [name=regitser_user_password]").val();
+      let oldpwd = $(".register_page [name=regitser_user_password]").val();
 
       if (newpwd != oldpwd) {
         return "两次密码不一致";
+      }
+    },
+
+    captcha: function (captchaText) {
+      if (captchaText != captcha_text) {
+        initCaptcha();
+        return "验证码错误！";
       }
     },
   });
@@ -113,4 +128,19 @@ $(function () {
       },
     });
   });
+
+  // 获取验证码并显示
+  function initCaptcha() {
+    $.ajax({
+      url: "/api/captcha",
+      type: "GET",
+      success: function (res) {
+        if (res.status !== 0) {
+          return layer.msg(res.msg);
+        }
+        $("#captcha_img").empty().html(res.data);
+        captcha_text = res.text;
+      },
+    });
+  }
 });
