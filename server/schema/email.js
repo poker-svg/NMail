@@ -5,6 +5,9 @@ const joi = require("joi");
 const receiver = joi.string().email().required();
 const title = joi.string().required();
 const content = joi.string().required();
+const attachment_name = joi.string();
+const attachment_data = joi.string();
+const attachment_type = joi.string();
 
 // 向外暴露发送邮件时的验证规则
 exports.send_email_schema = {
@@ -12,5 +15,8 @@ exports.send_email_schema = {
     receiver,
     title,
     content,
+    attachment_name,
+    attachment_data,
+    attachment_type,
   },
 };

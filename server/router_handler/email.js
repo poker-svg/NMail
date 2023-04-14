@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-04-02 21:00:00
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-14 11:25:06
+ * @LastEditTime: 2023-04-14 11:44:26
  * @FilePath: \NMail\server\router_handler\email.js
  * @Description: 后端的用户处理器
  */
@@ -29,6 +29,10 @@ const nodemailer = require("nodemailer");
  * @apiParam  {string} receiver 收件方的邮箱地址
  * @apiParam  {string} title 邮件主题
  * @apiParam  {string} content 邮件内容
+ * @apiParam  {string} attachment_name 附件名(非必须)
+ * @apiParam  {string} attachment_data 附件内容(非必须)
+ * @apiParam  {string} attachment_type 附件编码方式(非必须)
+ *
  *
  * @apiSuccess (返回参数说明) {int} status 请求是否成功，0：成功；1：失败
  * @apiSuccess (返回参数说明) {string} message 请求结果的描述消息
@@ -38,6 +42,9 @@ const nodemailer = require("nodemailer");
  *    "receiver" : "201220028@smail.nju.edu.cn"
  *    "title"    : "poker-svg"
  *    "content"  : "<p>this is a test mail</p>"
+ *    "attachment_name"  :  "QQ_POP3_SMTP.txt"
+ *    "attachment_data"  :  "POP3/SMTP服务密码： rihaihthzarwdhcj\nIMAP/SMTP服务密码：poohxmdepcljddec"
+ *    "attachment_type"  :  "utf-8"
  * }
  *
  * @apiSuccessExample {json} Success-Response:
@@ -50,7 +57,7 @@ exports.sendEmail = (req, res) => {
   // 获取客户端提交到服务器的邮件信息
   const email_info = req.body;
 
-  // console.log(email_info);
+  console.log(email_info);
 
   const find_senderinfo_sqlStr = "select * from users where id=?";
   database.query(find_senderinfo_sqlStr, req.auth.id, (err, results) => {
@@ -88,23 +95,44 @@ exports.sendEmail = (req, res) => {
           },
         });
 
-        let mailOptions = {
-          from: '"poker-svg" <poker-svg@foxmail.com>',
-          to: email_info.receiver,
-          subject:
-            email_info.title +
-            " from " +
-            `${sender_nickname}<${sender_name}@smail.nju.edu.cn>`,
-          html: email_info.content,
+        let mailOptions;
 
-          //发送附件
-          // attachments: [
-          //   {
-          //     filename: "帝国破晓.jpg",
-          //     path: "http://127.0.0.1:5501/7bc8dc39-bfb5-4c35-9900-5ed643887888",
-          //   },
-          // ],
-        };
+        if (
+          email_info.attachment_name &&
+          email_info.attachment_data &&
+          email_info.attachment_type
+        ) {
+          mailOptions = {
+            from: '"poker-svg" <poker-svg@foxmail.com>',
+            to: email_info.receiver,
+            subject:
+              email_info.title +
+              " from " +
+              `${sender_nickname}<${sender_name}@smail.nju.edu.cn>`,
+            html: email_info.content,
+
+            // 发送附件
+            attachments: [
+              {
+                filename: email_info.attachment_name,
+                content: new Buffer(
+                  email_info.attachment_data,
+                  email_info.attachment_type
+                ),
+              },
+            ],
+          };
+        } else {
+          mailOptions = {
+            from: '"poker-svg" <poker-svg@foxmail.com>',
+            to: email_info.receiver,
+            subject:
+              email_info.title +
+              " from " +
+              `${sender_nickname}<${sender_name}@smail.nju.edu.cn>`,
+            html: email_info.content,
+          };
+        }
 
         transporter.sendMail(mailOptions, (error, info) => {
           if (error) {
