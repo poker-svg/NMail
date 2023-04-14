@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-04-02 21:00:00
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-03 22:37:35
+ * @LastEditTime: 2023-04-14 11:25:06
  * @FilePath: \NMail\server\router_handler\email.js
  * @Description: 后端的用户处理器
  */
@@ -50,6 +50,8 @@ exports.sendEmail = (req, res) => {
   // 获取客户端提交到服务器的邮件信息
   const email_info = req.body;
 
+  // console.log(email_info);
+
   const find_senderinfo_sqlStr = "select * from users where id=?";
   database.query(find_senderinfo_sqlStr, req.auth.id, (err, results) => {
     if (err) return res.response_data(err);
@@ -94,10 +96,21 @@ exports.sendEmail = (req, res) => {
             " from " +
             `${sender_nickname}<${sender_name}@smail.nju.edu.cn>`,
           html: email_info.content,
+
+          //发送附件
+          // attachments: [
+          //   {
+          //     filename: "帝国破晓.jpg",
+          //     path: "http://127.0.0.1:5501/7bc8dc39-bfb5-4c35-9900-5ed643887888",
+          //   },
+          // ],
         };
 
         transporter.sendMail(mailOptions, (error, info) => {
-          if (error) return res.response_data("发送邮件失败,请稍后重试!");
+          if (error) {
+            console.log(error);
+            return res.response_data("发送邮件失败,请稍后重试!");
+          }
           console.log("Message sent: %s", info.messageId);
         });
 
