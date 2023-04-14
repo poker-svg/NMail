@@ -2,7 +2,7 @@
  * @Author: Xin 201220028@smail.nju.edu.cn
  * @Date: 2023-04-02 21:00:00
  * @LastEditors: Xin 201220028@smail.nju.edu.cn
- * @LastEditTime: 2023-04-14 11:44:26
+ * @LastEditTime: 2023-04-14 13:51:19
  * @FilePath: \NMail\server\router_handler\email.js
  * @Description: 后端的用户处理器
  */
@@ -56,6 +56,7 @@ const nodemailer = require("nodemailer");
 exports.sendEmail = (req, res) => {
   // 获取客户端提交到服务器的邮件信息
   const email_info = req.body;
+  console.log(email_info);
 
   console.log(email_info);
 
@@ -95,7 +96,15 @@ exports.sendEmail = (req, res) => {
           },
         });
 
-        let mailOptions;
+        let mailOptions = {
+          from: '"poker-svg" <poker-svg@foxmail.com>',
+          to: email_info.receiver,
+          subject:
+            email_info.title +
+            " from " +
+            `${sender_nickname}<${sender_name}@smail.nju.edu.cn>`,
+          html: email_info.content,
+        };
 
         if (
           email_info.attachment_name &&
@@ -103,34 +112,15 @@ exports.sendEmail = (req, res) => {
           email_info.attachment_type
         ) {
           mailOptions = {
-            from: '"poker-svg" <poker-svg@foxmail.com>',
-            to: email_info.receiver,
-            subject:
-              email_info.title +
-              " from " +
-              `${sender_nickname}<${sender_name}@smail.nju.edu.cn>`,
-            html: email_info.content,
-
+            ...mailOptions,
             // 发送附件
             attachments: [
               {
                 filename: email_info.attachment_name,
-                content: new Buffer(
-                  email_info.attachment_data,
-                  email_info.attachment_type
-                ),
+                content: email_info.attachment_data,
+                contentType: email_info.attachment_type,
               },
             ],
-          };
-        } else {
-          mailOptions = {
-            from: '"poker-svg" <poker-svg@foxmail.com>',
-            to: email_info.receiver,
-            subject:
-              email_info.title +
-              " from " +
-              `${sender_nickname}<${sender_name}@smail.nju.edu.cn>`,
-            html: email_info.content,
           };
         }
 

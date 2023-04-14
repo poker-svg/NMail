@@ -56,7 +56,20 @@
               <textarea name="content"></textarea>
             </div>
           </div>
-          <!-- 第4行 发信 -->
+          <!-- 第4行 附件 -->
+          <div class="layui-form-item">
+            <label class="layui-form-label">附件</label>
+            <input type="file" id="attachmentInput" />
+            <!-- <button
+              type="button"
+              class="layui-btn"
+              id="attachmentBtn"
+              lay-data="{accept: 'file'}"
+            >
+            <i class="layui-icon">&#xe67c;</i>上传文件
+            </button> -->
+          </div>
+          <!-- 第5行 发信 -->
           <div class="layui-form-item">
             <div class="layui-input-block">
               <button class="layui-btn" lay-submit id="sendBtn">发送</button>
